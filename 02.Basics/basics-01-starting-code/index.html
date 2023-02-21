@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- pour utiliser Vue c'est simple tu l'importe juste comme ca -->
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+
+  </head>
+  <body>
+
+    <header>
+      <h1>Vue Course Goals</h1>
+    </header>
+
+    <section id="user-goal">
+      <h2>My Course Goal</h2>
+      <!-- pour afficher la data tu mets entre {{}} -->
+      <p>{{ coursGoal }}</p>
+
+      <!-- pour utiliser une valeurData dans un attribut html tu utilises v-bind: -->
+      <p>learn more about Vue :<a v-bind:href="vueLink">click here</a></p>
+
+      <!-- pour utiliser les méthodes suffit juste de les mettre entre {{ function() }} sans oublier les '()' -->
+      <p>{{ monBut() }}</p>
+
+      <!-- pour injecter de l'html tu mets le 'v-html = "ta variables"' à l'interieur de ta balise concernée -->
+      <p v-html = "html"></p>
+    </section>
+
+  </body>
+</html>
