@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+
+  </head>
+  <body>
+
+    <header>
+      <h1>Vue Events</h1>
+    </header>
+
+    <section id="events">
+
+      <h2>Events in Action</h2>
+
+      <!-- 
+        pour pouvoir utiliser un événement tu vas dans la balise concernée et tu mets un "v-on: event_en_particulier = ce que tu veux faire" ici dans notre exemple on veux simplément incrementer et decrementet la valeur counter déja presente dans le data()
+
+        <button v-on:click="counter++">Plus</button>
+        <button v-on:click="counter--">Moins</button>
+       -->
+
+      <!-- bien sur il est preferable d'utiliser les méyhodes et de pas implémenter de la logique directement dans notre html -->
+      <button v-on:click="increment()">Plus</button>
+      <button v-on:click="decrement()">Moins</button>
+
+      <!-- le ".left" ici est aussi un modificateur càd une sorte de racourci pour nous eviter de creer une méthode js puis de l'mplementer ...etc Vue est là pour nous faire gagner du temps -->
+      <button v-on:click.left="incrementPlus(10)">Plus 10</button>
+      <button v-on:click.left="decrementMoins(5)">Moins 05</button>
+
+      <p>Result: {{ counter }}</p>
+      <!-- le "v-once" est une fonctionalité tres niche mais qui peut servire elle sert à blocker l'execution du code vue -->
+      <p v-once>Resultat fix: {{ counter }}</p>
+
+      <!-- ici on a ajouter le "$event" car on devait ajouter un attribut en plus dans notre fonction càd que si tu n'avais pas le 'souhil' ici tu pouvais ne rien mettre du tt => "setName" -->
+      <input v-on:input="setName($event,'souhil')" type="text"/>
+      <p>Name en Live : {{ name }}</p>
+
+      <!-- 
+        pour empecher un formulaire d'envoyer la data via la requette http dans le navigateur et l'empecher d'actualiser notre page on utilisait avec le JS-vanilla la méthode preventDefault() via l'event.
+        mais grace à VueJS on peux utiliser les modificateurs comme ci-dessous
+      -->
+      <p>Formulaire d'envoie : </p>
+      <form v-on:submit.prevent="formulaire">
+        <input type="text"/>
+        <button type="submit">Envoyer</button>
+      </form>
+
+      <p>Name apres envoie : {{ confirmedName }}</p>
+      <!-- 
+        pareil ici on a utiliser un modificateur sur notre event keyup :  
+        l'evenement "keyup" => veut dire appuyer sur un boutton
+        le modificateur ".enter" => veut dire le boutton 'Entrez'
+      -->
+      <input type="text"/ v-on:keyup.enter="setConfirmedName">
+
+    </section>
+
+  </body>
+</html>
