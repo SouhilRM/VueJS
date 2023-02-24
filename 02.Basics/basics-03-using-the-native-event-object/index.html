@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+
+  </head>
+  <body>
+    <header>
+      <h1>Vue</h1>
+    </header>
+
+    <section id="events">
+      <h2>Events in Action</h2>
+
+      <button v-on:click="add(10)">Add 10</button>
+      <button v-on:click="reduce(5)">Subtract 5</button>
+
+      <p>Result: {{ counter }}</p>
+      <!-- 
+        prenons l'exemple precedent et essayon de mettre un boutton reset pour reset la valeur de notre input : 
+
+        -logiquement tu vafaire un truc du genre => <input type="text" v-bind:value="name" v-on:input="setName">
+
+        -cela dit Vue propose un racourci qui est v-model qui permet lorceque tu as un v-bind + v-on de les combiner pour mettre un v-model comme suit => <input type="text" v-model="name">
+
+        -et il va automatiquement faire l'event don tu peux l'enlever de ton fichier js
+       -->
+      <input type="text" v-model="name">
+
+      <!-- bien sur tu rajoute le boutton reset avec son event et sa methode faut pas deconne -->
+      <p>Your Name: {{ name }}</p>
+      <button v-on:click="resetButton">Reset value</button>
+
+      <!-- 
+        voyons mnt les computedFunction c'est comme les méthodes mais c'est mieux car VueJs si tu utilises les méthodes il va appeler toutes les méthodes sans éxeption meme si tu ne les utilisent pas forcement alors qu'avec les computeurs on aura pas ce problème .
+        mais est ce que cela veut dire qu'on n'utilisera plus les méthodes ?? Non quand t'aura les event faudra tjr les utiliser mais dans la majorité des cas on prefera utiliser les computeurs .
+      -->
+      <p>{{ method_version() }}</p>
+      <!-- n'oublie jamais que les computedfunction ya as de parenthèses !!!! -->
+      <p>{{ computed_version }}</p>
+
+      <!--
+        petit racourci : 
+
+        v-on:click ==> @click
+        v-bin:value="" ==> :value=''
+      -->
+
+    </section>
+
+  </body>
+</html>
