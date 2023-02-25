@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+
+  </head>
+  <body>
+
+    <header>
+      <h1>Vue Dynamic Styling</h1>
+    </header>
+
+    <section id="styling">
+
+      <!--
+        D'abord on crée un event de click pour définir si un élément est sleectioné ou pas grace au booleen comme ca si un element est séléctionné son attribut qu'on a défini dans Data() à false devient true grace à la method event
+
+        Pour definir le style d'un élémrent en tans normal on fat comme ca => style="border-color: red;"
+
+        Mais avec Vue on peut faire comme ca => :style="{borderColor: 'red'}" et grace à cette expression on peut utiliser notre attribut booleen pour définir quand un element est selectionné pour lui appliqué le style voulu
+      -->
+
+      <!-- si le div est selectionné tu lui applique une couleur de bordure rouge -->
+      <div class="demo" :style="{borderColor: boxA ? 'red' : '#ccc'}" @click="boxSelected('A')"></div>
+
+      <!--
+        bien mnt le probleme c'est qu'on veut pas trop utiliser du css comme ca avec :style="{}" c'est pas tres propre; la meilleure chose à faire c'est de séparer ton css dans le fichier css puis de l'utiliser sous forme de class comme avec notre class "demo" comment faire ??
+      -->
+      <!--
+        -deja tu garde ta class "demo" à part tu vas pas l'inclure dynamiquement car elle esy presente tout le temps par contre ta "newClass" elle sera dinamyque.
+        -pour la syntaxe c'est la meme que pour le 'style' => :class="{ newClass: boxB }" avec en plus tu met dans ton objet le nom de ta class comme index puis ton attrbut data() qui est un booleen je rapel comme valeur.
+      -->
+      <div 
+        class="demo" 
+        :class="{ newClass: boxB }"
+        @click="boxSelected('B')"
+      ></div>
+
+      <!-- bien sur il et preferable de mettre la logique dans un computeur dans ton fichier js si c'est trop complexe avec des boucle et des if dans tout les sens comme ici -->
+      <div 
+        class="demo" 
+        :class="boxClasses"
+        @click="boxSelected('C')"
+      ></div>
+
+    </section>
+
+  </body>
+</html>
