@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics section 02</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+
+    <script src="https://unpkg.com/vue@next" defer></script>
+    <script src="app.js" defer></script>
+
+  </head>
+  <body>
+
+    <header>
+      <h1>Vue Course Goals</h1>
+    </header>
+
+    <!-- dans cette section on veut ajouter des goals en appuyant sur le boutton 'addgoal' et s'il n'y a aucun goal alors le paragraphe: 'No goals have been added yet - please start adding some!' sra afficher -->
+    <section id="user-goals">
+
+      <h2>My course goals</h2>
+
+      <input type="text" v-model="goalValue" @keyup.enter="addGoal"/>
+
+      <button @click="addGoal">Add Goal</button>
+
+      <!-- on utilise le 'v-if' et on lui passe notre condition pour afficher le paragraphe -->
+      <p v-if="goals.length === 0">No goals have been added yet - please start adding some!</p>
+
+      <!--
+        -on utilise aussi le 'v-else' 
+        -Attention le v-else si tu veux l'utiliser il faut absolement qu'il soit tout juste apres la balise qui a le 'v-if'
+        -si tu a plusieurs condition imbriquer tu peux mettre 'v-if' => 'v-else-if' => 'v-else' ...
+
+        -tu peux aussi utiliser le 'v-show' partout MAIS contrairement au 'v-if-else' qui va supprimer l'element du DOM le 'v-show' lui va juste ajouter la class hidden et cacher les élément au niveau du CSS donc à toi de voir ce quye tu as besoin
+      -->
+      <ul v-else>
+        <!--
+          -pour afficher tes goals suffit de boucler sur ton tableau avec une boucle v-for( in ) ez
+          -tu peux aussi passer en para l'index si t'en a besoin v-for="(goal, index) in goals"
+        -->
+        <li 
+
+            v-for="(goal, index) in goals"
+            @click="dropGoal(index)"
+
+          ><p>{{ goal }} - {{ index }}</p>
+
+          <!-- alors attention ici si tu click pour taper sur ton input vu que tu es à l'interieur du v-for="" tu vas supprimer ton élément; pour éviter cela tu stop la propagation avec un event stop -->
+          <input @click.stop/>
+      
+        </li>
+        
+      </ul>
+      
+      <ul>
+        <!--
+          -tu peux aussi boucler sur un objet comme ci-dessous cela affichera les valeurs
+          -et si tu veux les clé + valeur tu rajoute l'key aussi
+          -et si tu veux les clé + valeur + index c'est aussi possible tu rajoute l'index tu rajoute l'key aussi
+        -->
+        <li v-for="(value, key, index) in {nom: 'souhil', age: 23}">{{key}} - {{ value }} - {{index}}</li>
+      </ul>
+      <ul>
+        <!-- tu peux aussi boucler sur les nombres comme ca -->
+        <li v-for="num in 3">{{ num }}</li>
+      </ul>
+
+    </section>
+  </body>
+</html>
