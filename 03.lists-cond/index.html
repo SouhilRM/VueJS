@@ -44,10 +44,10 @@
         <!--
           -pour afficher tes goals suffit de boucler sur ton tableau avec une boucle v-for( in ) ez
           -tu peux aussi passer en para l'index si t'en a besoin v-for="(goal, index) in goals"
+          -le :key="goal" tu dois tjr l'ajouter quand tu utilise le v-for pour eviter certain bug il est super important
         -->
         <li 
-
-            v-for="(goal, index) in goals"
+            v-for="(goal, index) in goals" :key="goal"
             @click="dropGoal(index)"
 
           ><p>{{ goal }} - {{ index }}</p>
