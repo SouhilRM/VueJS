@@ -73,7 +73,7 @@
       <section id="log" class="container">
         <h2>Battle Log</h2>
         <ul>
-          <li v-for="logMessage in logs">
+          <li v-for="logMessage in logs" :key="logMessage">
 
             <span
               :class="{'log--player': logMessage.person === 'player', 'log--monster': logMessage.person === 'monster'}"
