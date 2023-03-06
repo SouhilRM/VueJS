@@ -1,9 +1,9 @@
 <template>
     <section>
-        <h2>Ma liste d'amis : </h2>
+        <header><h1>Ma liste d'amis : </h1></header>
         <ul>
-            <li>ami 01</li>
-            <li>ami 02</li>
+            <friend-contact></friend-contact>
+            <friend-contact></friend-contact>
         </ul>
     </section>
 </template>
@@ -18,7 +18,8 @@
                         nom: 'Ramdane Mamcha',
                         prenom: 'Souhil',
                         age: 23,
-                        tel: '0669884477'
+                        tel: '0669884477',
+                        mail: 'souhil@test.com'
                     },
                     {
                         id: '02',
@@ -26,6 +27,7 @@
                         prenom: 'Ghizlen',
                         age: 30 ,
                         tel: '0699999999',
+                        mail: 'laghiz@test.com'
                     }
                 ]
             }
