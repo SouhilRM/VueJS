@@ -1,47 +1,51 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
+  <section>
   <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
+    <h1>Exo components : </h1>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
+    <user-data @submit-data="submitData"></user-data>
+
+    <ul>
+      <active-user
+        v-for="user in users"
+        :key="user.id"
+
+        :id="user.id"
+        :user-name="user.username"
+        :user-age="user.age"
+
+        @delete-user="deleteUser"
+      ></active-user>
+    </ul>
   </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  </section>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+<script>
+  export default{
+    data(){
+      return{
+        users:[
+          {
+            id:'00',
+            username:'default-user',
+            age:'20'
+          }
+        ]
+      }
+    },
+    methods:{
+      deleteUser(userId){
+        this.users = this.users.filter( user => user.id !== userId )
+      },
+      submitData(username, age){
+        const newUser = {
+          id: new Date().toISOString(),
+          username: username,
+          age: age
+        }
+        this.users.push(newUser)
+      }
+    }
   }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
-</style>
+</script>

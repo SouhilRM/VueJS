@@ -36,7 +36,7 @@
                 :is-homme="ami.sex"
 
                 @toogle-sex="toogleSexStatus"
-                @delete="deleteContact"
+                @delete-contact="deleteContact"
             ></friend-contact>
 
         </ul>
@@ -47,7 +47,7 @@
 <script>
     //pour exporter tu utilises le mot clé 'export'
 
-import NewFriend from './components/NewFriend.vue';
+    import NewFriend from './components/NewFriend.vue';
 
     //le mot clé 'default' signifie que l'objet par defaut qui va etre exporter ca sera notre objet data()
     export default {

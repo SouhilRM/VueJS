@@ -21,7 +21,7 @@
     <button @click="toggleSex">Changer de sex</button>
 
     <!-- tu peux aussi configurer ta logique directement dans ta balise ci-dessous; attention tu rajoutes pas le 'this' ici contrairement à l'interieur de ta methode -->
-    <button @click="$emit('delete',id)">Supprimer</button>
+    <button @click="$emit('delete-contact',id)">Supprimer</button>
 
     <ul v-if="visibility">
         <li>
@@ -129,7 +129,7 @@
         },
 
         //alors les 'emits' d'apres ce que j'ai compris c'est juste les events que tu vas utiliser pour commun avec le parent tu les mets dans le tableau emits pour preciser à vue que c'est des events qui vont toucher à la mutation donc tt est s controle
-        emits:['toogle-sex', 'delete'],
+        emits:['toogle-sex', 'delete-contact'],
 
         methods: {
             toggleDetails(){
