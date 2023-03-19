@@ -8,7 +8,8 @@ const app = Vue.createApp({
     },
     computed:{
         boxClasses(){
-            return { newClass: this.boxC }
+            //newClass: this.boxC veut dire que tu aplique le style de ta class newClass quand ta boxC est !Vrai donc faux
+            return { newClass: !this.boxC }
         }
     },
     methods:{

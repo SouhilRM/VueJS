@@ -32,7 +32,7 @@ header {
   width: calc(100% - 32px);
   height: 100px;
   margin: 16px;
-  border: 2px dashed #ccc;
+  border: 8px dashed #ccc;
 }
 
 .newClass {
