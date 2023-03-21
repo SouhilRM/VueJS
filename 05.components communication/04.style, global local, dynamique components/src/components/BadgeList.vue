@@ -8,7 +8,10 @@
       <li>
         <base-badge type="author" caption="AUTHOR"></base-badge>
       </li>
+      <input type="text">
+      <button type="submit">GO</button>
     </ul>
+    
   </section>
 </template>
 
