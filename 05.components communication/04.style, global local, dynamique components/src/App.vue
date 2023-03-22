@@ -9,12 +9,15 @@
     <button @click="setSelectedComponent('user-info')">Afficher Infos</button>
 
     <!-- la balise keep-alive sert si tu as un de tes élément qui dispose d'un input comme ici avec notre component badge-liste; si tu ecris un truc à l'intrieur puis tu switch de component puis tu reviens ton input gardera ce que tu as ecris dedans -->
+
+    <!--
+      - la balise component est primordiale pour pouvoir switch
+      - le v-bind:is="" est necessaire aussi et tu mets à l'iterieur la var que t'as declarée
+      - Iportant : si les balises de tes components avaient des props qui etaient passé comme attributs tu dois les passer aussi pour que le switch puisse marché
+    -->
+    
     <keep-alive>
-      <!--
-        - la balise component est primordiale pour pouvoir switch
-        - le v-bind:is="" est necessaire aussi et tu mets à l'iterieur la var que t'as declarée
-        - Iportant : si les balises de tes components avaient des props qui etaient passé comme attributs tu dois les passer aussi pour que le switch puisse marché
-      -->
+      
       <component 
         
         :is="selectedComponent" 
