@@ -19,9 +19,12 @@
       <!-- le "teleportto" permet de choisir ou sera implémenter ton component au niveau du DOM; si tu ne le met ca marchera mais sémentiquement ca sera pas opti car vaut mieux le mettra à la fin du "body" grace à l'attribut "to=" surtt si c'est juste un component de type "slot" qui sert qu'a faire du style -->
       <Teleport to="body">
         <error-alert v-if="inputIsInvalid">
+
         <h2>Input is invalid!</h2>
         <p>Please enter at least a few characters...</p>
+        
         <button @click="resetGoal">Okay</button>
+
         </error-alert>
       </Teleport>
 
@@ -31,11 +34,15 @@
 </template>
 
 <script>
+
 import ErrorAlert from './ErrorAlert.vue';
+
   export default{
+
     components: {
       ErrorAlert
     },
+    
     data() {
       return {
         inputIsInvalid: false
