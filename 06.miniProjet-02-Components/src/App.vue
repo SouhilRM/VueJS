@@ -1,47 +1,55 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
-</script>
-
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
-
-  <main>
-    <TheWelcome />
-  </main>
+  <the-header title="Remember Me"></the-header>
+  <stored-ressources
+    :ressources="storedResources"
+  ></stored-ressources>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-}
+<script>
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
+import StoredRessources from './components/learning-ressources/StoredRessources.vue'
+import TheHeader from './components/layouts/TheHeader.vue'
 
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+export default{
+
+  components:{
+    StoredRessources,
+    TheHeader,
+  },
+
+  data(){
+    return{
+      storedResources: [
+        {
+          id: 'official-guide',
+          title: 'Official Guide',
+          description: 'The official VueJs documentation.',
+          link: 'https://vuejs.org'
+        },
+        {
+          id: 'google',
+          title: 'Google',
+          description: 'Learn to google...',
+          link: 'https://google.com'
+        },
+      ]
+    }
+  }
+}
+</script>
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+  * {
+    box-sizing: border-box;
   }
 
-  .logo {
-    margin: 0 2rem 0 0;
+  html {
+    font-family: 'Roboto', sans-serif;
   }
 
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
+  body {
+    margin: 0;
   }
-}
 </style>
