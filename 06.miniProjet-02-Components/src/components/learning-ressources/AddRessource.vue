@@ -1,4 +1,13 @@
 <template>
+    <base-dialogue v-if="inputIsInvalid" title="invalid input" @close="closeModel">
+        <template #default>
+            <p>L'un de vos inputs est vide.</p>
+            <p>Veillez reassayez ultérieurement.</p>
+        </template>
+        <template #actions>
+            <base-button @click="closeModel">Okay</base-button>
+        </template>
+    </base-dialogue>
     <base-card>
         <form @submit.prevent="submitData">
             <div class="form-control">
@@ -22,13 +31,26 @@
 
 <script>
 export default{
+    data(){
+        return{
+            inputIsInvalid: false,
+        }
+    },
     methods:{
         submitData(){
             const enteredTitle = this.$refs.titleInput.value
             const enteredDescription = this.$refs.descriptionInput.value
             const enteredLink = this.$refs.linkInput.value
 
+            //la methode trim() permet d'éliminer les espace et les tabulation dans une chaine de characteres vide
+            if (enteredTitle.trim() === '' || enteredDescription.trim() === '' || enteredLink === '') {
+                this.inputIsInvalid = true
+            }
+
             this.addRessource(enteredTitle, enteredDescription, enteredLink)
+        },
+        closeModel(){
+            this.inputIsInvalid = false
         }
     },
     inject:['addRessource']

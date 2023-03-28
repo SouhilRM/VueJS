@@ -9,6 +9,7 @@
       v-for="res in ressources"
       :key="res.id"
 
+      :id="res.id"
       :title="res.title"
       :description="res.description"
       :link="res.link"
